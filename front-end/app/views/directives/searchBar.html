@@ -5,12 +5,21 @@
       <a class="navbar-brand" href="#">
         <span>Logo</span>
       </a>
+
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#search-form" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
     </div>
 
-    <div class="nav navbar-nav col-md-8">
-      <div >
-        <form class='navbar-form'>
-          <div class='col-md-2 col-sm-2 col-xs-3' style='padding: 0px;'>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse col-xs-12 col-md-10" id="search-form">
+      <ul class="nav navbar-nav">
+        <li>
+          <form>
+          <div class='col-xs-3'>
             <button type="button" class="btn btn-default dropdown-toggle pull-right" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Scan <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
@@ -18,16 +27,18 @@
               <li><a href="#">Bar code</a></li>
             </ul>
           </div>
-          <div class='col-md-8 col-sm-8 col-xs-9' style='padding: 0px;'>
+
+          <div class='col-xs-9'>
             <input type="text" class="form-control" placeholder="Search" style='width: 100%'>
           </div>
-        </form>
-      </div>
-    </div> 
-
-    <div class='nav navbar-nav navbar-right col-md-2'>
-        <a href="#" class="btn btn-default pull-right">Sign in</a>
+          </form>
+        </li>
+        <li><a href="#" class="btn btn-default col-xs-12">Items</a></li>
+        <li><a href="#" class="btn btn-default col-xs-12">Warnings</a></li>
+        <li><a href="#" class="btn btn-default col-xs-12">Sign out</a></li>
+      </ul> 
     </div>
+    <!-- End toggling -->
 
   </div>
 </nav>
