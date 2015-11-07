@@ -8,6 +8,6 @@ logisticsApp.controller('ItemsController',
           console.log($scope);
         });
     }
-
+    
   }
 )
