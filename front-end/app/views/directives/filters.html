@@ -7,19 +7,19 @@
     </div>
     <label>Location</label>
     <div class="form-group">
-      <div class="checkbox">
+      <div class="checkbox" ng-repeat='location in locations'>
         <label>
           <input type="checkbox" value="option1">
-          Location 1
+          {{location.Name}}
         </label>
       </div>
     </div>
     <label>Categories</label>
     <div class="form-group">
-      <div class="checkbox">
+      <div class="checkbox" ng-repeat='category in categories'>
         <label>
           <input type="checkbox" value="option1">
-          Category 1
+          {{category.Name}}
         </label>
       </div>
     </div>

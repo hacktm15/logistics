@@ -6,7 +6,6 @@ logisticsApp.directive('searchBar',
       templateUrl: 'views/directives/searchBar.html',
       scope: {},
       controller: function SearchBarController($scope) {
-
       }
     };
   }
