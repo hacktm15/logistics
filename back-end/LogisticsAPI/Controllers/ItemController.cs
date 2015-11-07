@@ -51,6 +51,7 @@ namespace LogisticsAPI.Controllers
                     Item item = new Item();
                     item.CopyFrom(itemViewModel,db);
                     db.Repository<Item>().Add(item);
+                    WarningController.UpdateWarningForItem(item);
                     return Request.CreateResponse(HttpStatusCode.Created);
                 }
                 catch (Exception ex)
@@ -70,7 +71,10 @@ namespace LogisticsAPI.Controllers
                     item.CopyFrom(itemViewModel, db);
                     item.EntityId = new Guid(key);
                     if (db.Repository<Item>().Update(item, item.EntityId) != null)
+                    {
+                        WarningController.UpdateWarningForItem(item);
                         return Request.CreateResponse(HttpStatusCode.OK);
+                    }
                     else
                         return Request.CreateResponse(HttpStatusCode.NoContent);
                 }
@@ -87,8 +91,12 @@ namespace LogisticsAPI.Controllers
             {
                 try
                 {
-                    if (db.Repository<Item>().Delete(new Guid(key)) == true)
+                    var itemEntityId = new Guid(key);
+                    if (db.Repository<Item>().Delete(itemEntityId) == true)
+                    {
+                        WarningController.DeleteWarningForItem(itemEntityId);
                         return Request.CreateResponse(HttpStatusCode.OK);
+                    }
                     else
                         return Request.CreateResponse(HttpStatusCode.NoContent);
                 }

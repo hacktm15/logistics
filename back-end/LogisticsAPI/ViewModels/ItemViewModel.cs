@@ -28,12 +28,15 @@ namespace LogisticsAPI.ViewModels
 
         public string Picture { get; set; }
 
+        public string Status { get; set; }
+
         public void CopyFrom(Item item)
         {
             //Id = item.Id;
             EntityId = item.EntityId;
             Name = item.Name;
             Description = item.Description;
+            Status = item.Status;
             Categories = new List<Guid>();
             foreach (var cat in item.Categories)
             {

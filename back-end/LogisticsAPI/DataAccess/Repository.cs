@@ -56,6 +56,19 @@ namespace LogisticsAPI.DataAccess
             return t;
         }
 
+        public T[] Add(T[] t)
+        {
+            MySqlTransaction transaction = _connection.BeginTransaction();
+            _context.Database.UseTransaction(transaction);
+            foreach (T oneT in t)
+            {
+                _context.Set<T>().Add(oneT);
+                _context.SaveChanges();
+            }
+            transaction.Commit();
+            return t;
+        }
+
         public T Update(T updated, Guid key)
         {
             if (updated == null)

@@ -31,14 +31,35 @@ namespace LogisticsAPI.Models
 
         public string Picture { get; set; }
 
+        public virtual Warning Warning { get; set; }
+
+        public string Status { get; set; }
+
         public void CopyFrom(ItemViewModel itemViewModel, DBUnitOfWork db)
         {
             //Id = itemViewModel.Id;
             Name = itemViewModel.Name;
             Description = itemViewModel.Description;
+            Status = itemViewModel.Status;
             
             Location = db.Repository<Location>().Get(LocationId);
-            LocationId = itemViewModel.LocationId?? new Guid("803ad3c6-cd87-4ad8-9a26-3675f4999f42");
+            if (itemViewModel.LocationId != null)
+            {
+                LocationId = itemViewModel.LocationId.Value;
+            }
+            else
+            {
+                //LocationId = itemViewModel.LocationId ?? new Guid("803ad3c6-cd87-4ad8-9a26-3675f4999f42");
+                var defaultLocation = db.Repository<Location>().Find(x => x.Name == "Unknown");
+                if (defaultLocation != null)
+                {
+                    LocationId = defaultLocation.EntityId;
+                }
+                else
+                {
+                    throw new Exception("You don't have the 'Unknown' location.");
+                }
+            }
             Quantity = itemViewModel.Quantity;
             MinQuantity = itemViewModel.MinQuantity;
             Relevance = itemViewModel.Relevance;

@@ -1,4 +1,5 @@
-﻿using LogisticsAPI.Models;
+﻿using LogisticsAPI.Migrations;
+using LogisticsAPI.Models;
 using LogisticsAPI.ViewModels;
 using Microsoft.Data.Edm;
 using System;
@@ -24,13 +25,15 @@ namespace LogisticsAPI
             config.Formatters.Remove(config.Formatters.XmlFormatter);
 
             //// Web API routes
-            //config.MapHttpAttributeRoutes();
+            config.MapHttpAttributeRoutes();
 
-            //config.Routes.MapHttpRoute(
-            //    name: "DefaultApi",
-            //    routeTemplate: "api/{controller}/{id}",
-            //    defaults: new { id = RouteParameter.Optional }
-            //);
+            config.Routes.MapHttpRoute(
+                name: "DefaultApi",
+                routeTemplate: "api/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
+            Configuration.DemoSeed();
         }
 
         public static IEdmModel GetModel()
@@ -40,6 +43,7 @@ namespace LogisticsAPI
             builder.EntitySet<CategoryViewModel>("Category");
             builder.EntitySet<ItemViewModel>("Item");
             builder.EntitySet<LocationViewModel>("Location");
+            builder.EntitySet<WarningViewModel>("Warning");
 
             return builder.GetEdmModel();
         }

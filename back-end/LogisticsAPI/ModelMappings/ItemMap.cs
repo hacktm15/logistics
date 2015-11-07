@@ -28,6 +28,9 @@ namespace LogisticsAPI.ModelMappings
                 m.MapRightKey("CategoryEntityId");
             });
 
+            HasOptional(x => x.Warning)
+                .WithRequired(x => x.Item);
+
             //MapToStoredProcedures();
         }
     }

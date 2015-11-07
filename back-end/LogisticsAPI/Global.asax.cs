@@ -11,7 +11,7 @@ namespace LogisticsAPI
     {
         protected void Application_Start()
         {
-            GlobalConfiguration.Configuration.EnsureInitialized();
+            // GlobalConfiguration.Configuration.EnsureInitialized();
             GlobalConfiguration.Configure(WebApiConfig.Register);
 
         }
