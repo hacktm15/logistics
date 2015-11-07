@@ -9,5 +9,7 @@ logisticsApp.controller('ItemsController',
         });
     }
 
+    fetch();
+    
   }
 )
