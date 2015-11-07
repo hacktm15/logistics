@@ -1,4 +1,36 @@
 input, select {
   background-color: rgba(255, 255, 255, 0.2)!important;
-  color:#fff!important;
+  /* color:#fff!important; */
+}
+
+#login{
+    padding: 0 !important;
+    font-size: 19px;
+}
+
+.login-fields{
+    padding: 0 !important;
+    font-size: 22px;
+    padding-left: 10px !important;
+}
+
+#logo{
+    width: 300px;
+    display: table;
+    margin: auto;
+    margin-top: 10%;
+    margin-bottom: 5%;
+}
+
+#scan{
+    min-width: 160px;
+}
+
+#search-bar{
+    border: 0px;
+
+}
+
+#bar{
+     border-radius: 0px !important;
 }

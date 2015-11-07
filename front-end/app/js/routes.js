@@ -13,6 +13,9 @@ logisticsApp.config(['$routeProvider',
         templateUrl: 'views/warnings.html',
         controller: 'WarningsController'
       }).
+      when('/home', {
+        templateUrl: 'views/home.html'
+      }).
       otherwise({
         redirectTo: '/login'
       });

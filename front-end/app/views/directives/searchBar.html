@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<!-- <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
 
     <div class="navbar-header col-md-2">
@@ -14,31 +14,65 @@
       </button>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
+
     <div class="collapse navbar-collapse col-xs-12 col-md-10" id="search-form">
       <ul class="nav navbar-nav">
         <li>
           <form>
           <div class='col-xs-3'>
-            <button type="button" class="btn btn-default dropdown-toggle pull-right" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Scan <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-              <li><a href="#">QR</a></li>
-              <li><a href="#">Bar code</a></li>
-            </ul>
-          </div>
 
+            <div class="btn-group open">
+              <a aria-expanded="true" href="javascript:;" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                Dropdown
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="">QR</a></li>
+                <li><a href="">Bar code</a></li>
+               </ul>
+            </div>
+          </div>
           <div class='col-xs-9'>
             <input type="text" class="form-control" placeholder="Search" style='width: 100%'>
           </div>
           </form>
         </li>
-        <li><a href="#" class="btn btn-default col-xs-12">Items</a></li>
-        <li><a href="#" class="btn btn-default col-xs-12">Warnings</a></li>
-        <li><a href="#" class="btn btn-default col-xs-12">Sign out</a></li>
-      </ul> 
-    </div>
-    <!-- End toggling -->
 
+      </ul>
+
+
+
+  </div>
+</nav>
+  -->
+<nav class="navbar navbar-default navbar-top" id="bar">
+  <div class="container">
+          <div class="navbar-header">
+            <a href="javascript:;" class="navbar-brand">Logistics</a>
+
+          </div>
+
+          <div class="navbar-collapse collapse" id="navbar-main">
+
+            <form class="navbar-form navbar-left" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" id="search-bar" placeholder="Search" size="60">
+              </div>
+            </form>
+            <ul class="nav navbar-nav">
+              <li class="dropdown" id="scan">
+                <a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown" href="javascript:;" id="themes">Scan <span class="caret"></span></a>
+                <ul class="dropdown-menu" aria-labelledby="themes">
+                  <li><a href="">QR</a></li>
+                  <li><a href="">Bar code</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="http://builtwithbootstrap.com/" target="_blank">Built With Bootstrap</a></li>
+              <li><a href="https://wrapbootstrap.com/?ref=bsw" target="_blank">WrapBootstrap</a></li>
+            </ul>
+
+        </div>
   </div>
 </nav>
