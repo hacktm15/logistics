@@ -6,8 +6,9 @@ logisticsApp.directive('searchBar',
       templateUrl: 'views/directives/searchBar.html',
       scope: {},
       controller: function SearchBarController($scope, $routeParams, $location) {
-        $scope.searchContent = function(searchText) {
-          $location.path('/items').search(angular.extend($routeParams, {search: searchText}));
+
+        $scope.searchContent = function() {
+          $location.path('/items').search(angular.extend($routeParams, {Name: $scope.searchText}));
         };
 
       }

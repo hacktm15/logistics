@@ -1,9 +1,9 @@
 logisticsApp.controller('ItemsController',
-  function ItemsController($scope, itemService) {
+  function ItemsController($scope, itemService, $routeParams) {
     $scope.getItems = function() {
       var items = [];
       $scope.items = items;
-      itemService.all().then(
+      itemService.all($routeParams).then(
         function (response) {
           angular.copy(response.data.value, items);
         }
