@@ -56,8 +56,12 @@
 
             <form class="navbar-form navbar-left" role="search" ng-submit='searchContent()'>
               <div class="form-group">
-                <input type="text" class="form-control" id="search-bar" placeholder="Search" ng-model="searchText" size="60">
-                <input type="submit"  value="Submit">
+                <div class="input-group">
+                   <input type="text" class="form-control" id="search-bar" placeholder="Search for product" ng-model="searchText" size="60">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit" value="Submit">Go!</button>
+                  </span>
+                </div><!-- /input-group -->
               </div>
             </form>
             <ul class="nav navbar-nav">
@@ -70,8 +74,8 @@
               </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="http://builtwithbootstrap.com/" target="_blank">Built With Bootstrap</a></li>
-              <li><a href="https://wrapbootstrap.com/?ref=bsw" target="_blank">WrapBootstrap</a></li>
+              <li><a href="javascript:;" target="_blank">Profile</a></li>
+              <li><a href="javascript:;" target="_blank">Logout</a></li>
             </ul>
 
         </div>

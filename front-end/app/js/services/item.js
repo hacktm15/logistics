@@ -10,8 +10,14 @@ logisticsApp.factory('itemService', ['$http', function ($http) {
 
       }
       console.log(queryString);
+      if (queryString == '') {
+      return $http.get("http://tools.ligaac.ro/oData/Item");
 
+      } else {
       return $http.get("http://tools.ligaac.ro/oData/Item?$filter="+queryString);
+
+      }
+
     }
   };
 }]);
