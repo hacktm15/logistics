@@ -34,3 +34,18 @@ input, select {
 #bar{
      border-radius: 0px !important;
 }
+
+#img_product{
+
+    max-width: 300px;
+float: left;
+}
+
+.caption{
+    float: right;
+}
+
+.thumbnail{
+    display: table !important;
+    width: 100% !important;
+}

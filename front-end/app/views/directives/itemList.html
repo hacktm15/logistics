@@ -1,5 +1,8 @@
+
+
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   <div class="panel panel-{{panelType}}" ng-repeat="item in items">
+
     <div class="panel-heading" role="tab" id="heading{{item.EntityId}}">
       <h4 class="panel-title">
         <a role="button" data-toggle="collapse" href="javascript:;" data-parent="#accordion" data-target="#{{item.EntityId}}" aria-expanded="false" aria-controls="{{item.EntityId}}">
@@ -7,10 +10,28 @@
         </a>
       </h4>
     </div>
-    <div id="{{item.EntityId}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading{{item.EntityId}}">
-      <div class="panel-body">
 
+    <div id="{{item.EntityId}}" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="heading{{item.EntityId}}">
+
+      <div class="thumbnail">
+        <div>
+          <img src="img/logo.png" alt="..." id="img_product">
+        </div>
+
+          <div class="caption">
+            <h3>{{item.Name}}</h3>
+            <div class="panel-body">
+              <p><h4>Description</h4>{{item.Description}}</p>
+              <p><h4>Quantity</h4>{{item.Quantity}}</p>
+              <p><h4>Pret</h4>{{item.Price}}</p>
+              <p><h4>Location</h4>{{item.LocationId}}</p>
+              <p><h4>MinQuantity</h4>{{item.MinQuantity}}</p>
+              <p><h4>Relevance</h4>{{item.Relevance}}</p>
+            </div>
+          </div>
       </div>
     </div>
+
   </div>
 </div>
+
