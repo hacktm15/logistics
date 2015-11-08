@@ -5,7 +5,7 @@ logisticsApp.directive('filters',
       restrict: 'E',
       templateUrl: 'views/directives/filters.html',
       scope: {},
-      controller: function FiltersController($scope, locationService, categoriesService) {
+      controller: function FiltersController($scope, locationService, categoriesService, $routeParams, $location) {
         var locations = [];
         var categories = [];
         $scope.categories = categories;
@@ -20,6 +20,14 @@ logisticsApp.directive('filters',
             angular.copy(response.data.value, locations);
           }
         );
+
+        $scope.submitLocation = function() {
+          $location.path('/items').search(angular.extend($routeParams, {LocationId: $scope.locationId}));
+        }
+
+        $scope.submitCategory = function() {
+          $location.path('/items').search(angular.extend($routeParams, {CategoryId: $scope.categoryId}))
+        }
       }
     };
   }

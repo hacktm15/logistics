@@ -6,12 +6,19 @@ logisticsApp.factory('itemService', ['$http', function ($http) {
       if (params.Name != undefined) {
         queryString += 'substringof(tolower(\''+params.Name+'\'), tolower(Name)) eq true'
       }
-      if (params.Location != undefined) {
-
+      queryString += (queryString != '' && params.LocationId != undefined) ? ' and ' : ''
+      if (params.LocationId != undefined) {
+        queryString += "LocationId eq guid'" + params.LocationId + "'"
       }
-      console.log(queryString);
-
-      return $http.get("http://tools.ligaac.ro/oData/Item?$filter="+queryString);
+      queryString += (queryString != '' && params.CategoryId != undefined) ? ' and ' : ''
+      if (params.CategoryId != undefined) {
+        queryString += "substringof('" + params.CategoryId + "', CategoryId) eq true"
+      }
+      if (queryString == '') {
+        return $http.get("http://tools.ligaac.ro/oData/Item");
+      } else {
+        return $http.get("http://tools.ligaac.ro/oData/Item?$filter="+queryString);
+      }
     }
   };
 }]);
