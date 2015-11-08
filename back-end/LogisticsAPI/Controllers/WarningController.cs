@@ -34,7 +34,7 @@ namespace LogisticsAPI.Controllers
                 }
                 catch (Exception ex)
                 {
-                    return Request.CreateResponse(HttpStatusCode.InternalServerError, ex);
+                    return Request.CreateResponse(HttpStatusCode.InternalServerError);
                 }
             }
         }
@@ -53,7 +53,7 @@ namespace LogisticsAPI.Controllers
                 }
                 catch (Exception ex)
                 {
-                    return Request.CreateResponse(HttpStatusCode.InternalServerError, ex);
+                    return Request.CreateResponse(HttpStatusCode.InternalServerError);
                 }
             }
         }

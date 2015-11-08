@@ -7,13 +7,13 @@ namespace LogisticsAPI.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class deletedOlIdField : IMigrationMetadata
+    public sealed partial class addedUserRightsToTokens : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(deletedOlIdField));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(addedUserRightsToTokens));
         
         string IMigrationMetadata.Id
         {
-            get { return "201511071401513_deletedOlIdField"; }
+            get { return "201511072220336_addedUserRightsToTokens"; }
         }
         
         string IMigrationMetadata.Source

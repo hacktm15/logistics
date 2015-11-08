@@ -19,7 +19,34 @@ namespace LogisticsAPI.Controllers
 
         [HttpGet]
         [Route("api/LDAPAuth/IsAuthenticatedUser")]
-        public String IsAuthenticatedUser(String AuthUser, String AuthPassword = "[02Batman]")
+        public String IsAuthenticatedUser(String authUser, String authPassword)
+        {
+            String FullAuthUser = "";
+            DirectoryEntry LDAP = new DirectoryEntry(Server + Domain, ReadUser, ReadPassword, AuthenticationTypes.None);
+
+            try
+            {
+                DirectorySearcher search = new DirectorySearcher(LDAP);
+
+                search.Filter = "(cn=" + authUser + "*)";
+                SearchResult result = search.FindOne();
+                FullAuthUser = result.Path.Substring(Server.Length);
+                DirectoryEntry UserAuth = new DirectoryEntry(Server + Domain, FullAuthUser, authPassword, AuthenticationTypes.None);
+                DirectorySearcher UserAuthSearch = new DirectorySearcher(UserAuth);          
+                UserAuthSearch.Filter = "(&(cn=" + authUser + "*)(memberOf=cn=logistics,dc=services,dc=groups,dc=liga.ac,dc=root))";
+                SearchResult UserAuthResult = UserAuthSearch.FindOne();
+                //return "User: " + FullAuthUser + "\nPassword: " + System.Text.Encoding.UTF8.GetString(UserAuthResult.Properties["userPassword"][0] as byte[]);
+                return "OK";
+            }
+            catch (Exception ex)
+            {
+                return "Error authenticating user. The user name or password is incorrect.\n" + ex.Message;
+            }
+        }
+
+        [HttpGet]
+        [Route("api/LDAPAuth/IsAuthenticatedUser")]
+        public String IsAdmin(String AuthUser, String AuthPassword = "[02Batman]")
         {
             String FullAuthUser = "";
             DirectoryEntry LDAP = new DirectoryEntry(Server + Domain, ReadUser, ReadPassword, AuthenticationTypes.None);
@@ -32,15 +59,15 @@ namespace LogisticsAPI.Controllers
                 SearchResult result = search.FindOne();
                 FullAuthUser = result.Path.Substring(Server.Length);
                 DirectoryEntry UserAuth = new DirectoryEntry(Server + Domain, FullAuthUser, AuthPassword, AuthenticationTypes.None);
-                DirectorySearcher UserAuthSearch = new DirectorySearcher(UserAuth);          
-                UserAuthSearch.Filter = "(&(cn=" + AuthUser + "*)(memberOf=cn=logistics,dc=services,dc=groups,dc=liga.ac,dc=root))";
+                DirectorySearcher UserAuthSearch = new DirectorySearcher(UserAuth);
+                UserAuthSearch.Filter = "(&(cn=" + AuthUser + "*)(memberOf=cn=admin,cn=logistics,dc=services,dc=groups,dc=liga.ac,dc=root))";
                 SearchResult UserAuthResult = UserAuthSearch.FindOne();
                 //return "User: " + FullAuthUser + "\nPassword: " + System.Text.Encoding.UTF8.GetString(UserAuthResult.Properties["userPassword"][0] as byte[]);
                 return "OK";
             }
             catch (Exception ex)
             {
-                return "Error authenticating user. The user name or password is incorrect.\n" + ex.Message;
+                return "Check your privilege.\n" + ex.Message;
             }
         }
 

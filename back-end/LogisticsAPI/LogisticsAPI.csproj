@@ -86,6 +86,10 @@
       <HintPath>..\packages\System.Spatial.5.6.4\lib\net40\System.Spatial.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -122,6 +126,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Authorization\LDAPAuthorizeAttribute.cs" />
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\LocationController.cs" />
@@ -129,6 +135,8 @@
     <Compile Include="DataAccess\DBUnitOfWork.cs" />
     <Compile Include="DataAccess\Repository.cs" />
     <Compile Include="Controllers\LDAPAuthController.cs" />
+    <Compile Include="DataAccess\TokenRepository.cs" />
+    <Compile Include="DataAccess\UserRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -140,17 +148,30 @@
     <Compile Include="Migrations\201511072011462_addStatusPropertyToItem.Designer.cs">
       <DependentUpon>201511072011462_addStatusPropertyToItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511072210020_addedAuthModel.cs" />
+    <Compile Include="Migrations\201511072210020_addedAuthModel.Designer.cs">
+      <DependentUpon>201511072210020_addedAuthModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511072220336_addedUserRightsToTokens.cs" />
+    <Compile Include="Migrations\201511072220336_addedUserRightsToTokens.Designer.cs">
+      <DependentUpon>201511072220336_addedUserRightsToTokens.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelMappings\CategoryMap.cs" />
     <Compile Include="ModelMappings\ItemMap.cs" />
     <Compile Include="ModelMappings\LocationMap.cs" />
+    <Compile Include="ModelMappings\TokenModelMap.cs" />
     <Compile Include="ModelMappings\WarningMap.cs" />
+    <Compile Include="Models\AuthRequest.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="DataAccess\DBContextLogistics.cs" />
     <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\TokenModel.cs" />
+    <Compile Include="Models\TokenResponse.cs" />
     <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\UserRights.cs" />
     <Compile Include="Models\Warning.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
@@ -179,6 +200,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511072011462_addStatusPropertyToItem.resx">
       <DependentUpon>201511072011462_addStatusPropertyToItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511072210020_addedAuthModel.resx">
+      <DependentUpon>201511072210020_addedAuthModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511072220336_addedUserRightsToTokens.resx">
+      <DependentUpon>201511072220336_addedUserRightsToTokens.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

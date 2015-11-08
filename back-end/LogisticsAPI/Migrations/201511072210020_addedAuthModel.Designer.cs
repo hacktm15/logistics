@@ -7,13 +7,13 @@ namespace LogisticsAPI.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class firstOne : IMigrationMetadata
+    public sealed partial class addedAuthModel : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(firstOne));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(addedAuthModel));
         
         string IMigrationMetadata.Id
         {
-            get { return "201511071340045_firstOne"; }
+            get { return "201511072210020_addedAuthModel"; }
         }
         
         string IMigrationMetadata.Source

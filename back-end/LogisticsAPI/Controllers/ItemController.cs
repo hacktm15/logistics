@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Web.Http.OData;
 using LogisticsAPI.DataAccess;
 using LogisticsAPI.ViewModels;
+using LogisticsAPI.Authorization;
 
 namespace LogisticsAPI.Controllers
 {
@@ -17,6 +18,7 @@ namespace LogisticsAPI.Controllers
     {
         [EnableQuery]
         [HttpGet]
+        [LDAPAuthorize]
         public HttpResponseMessage GetItem()
         {
             using (var db = new DBUnitOfWork())
@@ -35,7 +37,7 @@ namespace LogisticsAPI.Controllers
                 }
                 catch (Exception ex)
                 {
-                    return Request.CreateResponse(HttpStatusCode.InternalServerError, ex); ;
+                    return Request.CreateResponse(HttpStatusCode.InternalServerError);
                 }
             }
         }
@@ -56,7 +58,7 @@ namespace LogisticsAPI.Controllers
                 }
                 catch (Exception ex)
                 {
-                    return Request.CreateResponse(HttpStatusCode.InternalServerError, ex);
+                    return Request.CreateResponse(HttpStatusCode.InternalServerError);
                 }
             }
         }
@@ -80,7 +82,7 @@ namespace LogisticsAPI.Controllers
                 }
                 catch (Exception ex)
                 {
-                    return Request.CreateResponse(HttpStatusCode.InternalServerError, ex);
+                    return Request.CreateResponse(HttpStatusCode.InternalServerError);
                 }
             }
         }
@@ -102,7 +104,7 @@ namespace LogisticsAPI.Controllers
                 }
                 catch (Exception ex)
                 {
-                    return Request.CreateResponse(HttpStatusCode.InternalServerError, ex);
+                    return Request.CreateResponse(HttpStatusCode.InternalServerError);
                 }
             }
         }

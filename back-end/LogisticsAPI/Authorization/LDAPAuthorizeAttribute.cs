@@ -2,26 +2,27 @@
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Controllers;
+using LogisticsAPI.DataAccess;
+using LogisticsAPI.Models;
 
 namespace LogisticsAPI.Authorization
 {
     public class LDAPAuthorizeAttribute : AuthorizeAttribute
     {
-        protected override bool IsAuthorized(HttpActionContext httpContext)
+        protected override bool IsAuthorized(HttpActionContext httpActionContext)
         {
-            //logger.Info("User name IsAuthenticated " + httpContext.User.Identity.IsAuthenticated);
-            //logger.Info("User name " + httpContext.User.Identity.Name);
-            if (httpContext.RequestContext.Principal.Identity.IsAuthenticated)
+           
+            UserRights userRights;
+            if (httpActionContext.Request.Headers.Contains("Authorization"))
             {
-                // return true;
+                if (TokenRepository.IsTokenValid(httpActionContext.Request.Headers.GetValues("Authorization").First(),
+                    out userRights))
+                {
+                    return true;
+                }
             }
-            return base.IsAuthorized(httpContext);
-        }
 
-        protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
-        {
-            base.HandleUnauthorizedRequest(filterContext);
-            filterContext.Result = new RedirectResult("~/Error/Unauthorized");
+            return false;//base.IsAuthorized(httpActionContext);
         }
     }
 }
