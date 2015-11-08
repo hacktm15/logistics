@@ -26,7 +26,11 @@ logisticsApp.directive('filters',
         }
 
         $scope.submitCategory = function() {
-          $location.path('/items').search(angular.extend($routeParams, {CategoryId: $scope.categoryId}))
+          $location.path('/items').search(angular.extend($routeParams, {CategoryId: $scope.categoryId}));
+        }
+
+        $scope.resetFilters = function() {
+          $location.path('/items').search({});
         }
       }
     };

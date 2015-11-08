@@ -7,6 +7,9 @@ logisticsApp.directive('itemList',
       controller: function ItemListController($scope) {
         $scope.panelType = $scope.$parent.panelType;
         $scope.items = $scope.$parent.items;
+        $scope.addStock = function() {
+          console.log($scope.stock);
+        }
       }
     };
   }

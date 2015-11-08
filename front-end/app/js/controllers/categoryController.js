@@ -1,5 +1,5 @@
 logisticsApp.controller('categoryController',
-  function CategoryController($scope, categoriesService) {
+  function categoryController($scope, categoriesService) {
     var categories = [];
     $scope.categories = categories;
       categoriesService.all().then(
