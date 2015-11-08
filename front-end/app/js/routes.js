@@ -17,9 +17,9 @@ logisticsApp.config(['$routeProvider',
         templateUrl: 'views/locations.html',
         controller: 'LocationController'
       }).
-      when('/categories', {
-        templateUrl: 'views/locations.html',
-        controller: 'LocationController'
+      when('/category', {
+        templateUrl: 'views/categories.html',
+        controller: 'CategoryController'
       }).
       when('/home', {
         templateUrl: 'views/home.html'

@@ -1,8 +1,8 @@
 logisticsApp.controller('categoryController',
-  function LocationController($scope, locationService) {
+  function CategoryController($scope, categoriesService) {
     var categories = [];
     $scope.categories = categories;
-     locationService.all().then(
+      categoriesService.all().then(
        function (response) {
          angular.copy(response.data.value, categories);
        }
