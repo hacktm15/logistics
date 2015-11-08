@@ -5,7 +5,8 @@ logisticsApp.directive('itemList',
       templateUrl: 'views/directives/itemList.html',
       scope: {},
       controller: function ItemListController($scope) {
-
+        $scope.panelType = $scope.$parent.panelType;
+        $scope.items = $scope.$parent.items;
       }
     };
   }

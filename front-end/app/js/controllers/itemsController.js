@@ -1,13 +1,15 @@
 logisticsApp.controller('ItemsController',
-  function ItemsController($scope, $http) {
-
-    function fetch() {
-      $http.get("http://tools.ligaac.ro/oData/Item")
-        .success(function (response) {
-          $scope.jsonResponse = response;
-          console.log($scope);
-        });
+  function ItemsController($scope, itemService, $routeParams) {
+    $scope.getItems = function() {
+      var items = [];
+      $scope.items = items;
+      itemService.all($routeParams).then(
+        function (response) {
+          angular.copy(response.data.value, items);
+        }
+      );
     }
-    
+    $scope.getItems();
+    $scope.panelType = 'info';
   }
-)
+);
