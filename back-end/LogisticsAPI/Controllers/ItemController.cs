@@ -18,7 +18,7 @@ namespace LogisticsAPI.Controllers
     {
         [EnableQuery]
         [HttpGet]
-        [LDAPAuthorize(Roles = new[] {Role.Read, Role.Admin, Role.Write})]
+        [LDAPAuthorize(Roles = new[] {Role.Read})]
         public HttpResponseMessage GetItem()
         {
             using (var db = new DBUnitOfWork())
@@ -44,6 +44,7 @@ namespace LogisticsAPI.Controllers
 
 
         [HttpPost]
+        [LDAPAuthorize(Roles = new[] { Role.Write })]
         public HttpResponseMessage Post([FromBody] ItemViewModel itemViewModel)
         {
             using (var db = new DBUnitOfWork())
@@ -63,6 +64,7 @@ namespace LogisticsAPI.Controllers
             }
         }
         [HttpPut]
+        [LDAPAuthorize(Roles = new[] { Role.Write })]
         public HttpResponseMessage Put([FromODataUri] string key, [FromBody] ItemViewModel itemViewModel)
         {
             using (var db = new DBUnitOfWork())
@@ -87,6 +89,7 @@ namespace LogisticsAPI.Controllers
             }
         }
 
+        [LDAPAuthorize(Roles = new[] { Role.Write })]
         public HttpResponseMessage Delete([FromODataUri] string key)
         {
             using (var db = new DBUnitOfWork())

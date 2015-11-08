@@ -73,8 +73,9 @@ namespace LogisticsAPI.Controllers
                             var warning = new Warning
                             {
                                 ItemEntityId = item.EntityId,
-                                Message = "Warning"
+                                Message = "Warning, [ " + item.Name + " ] is insuficiently stocked, need [ " + (item.MinQuantity - item.Quantity) + " ] more!"
                             };
+
                             item.Status = "Warning";
                             db.Repository<Warning>().Add(warning);
                             shouldUpdateExisting = true;

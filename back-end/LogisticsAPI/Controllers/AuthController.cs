@@ -14,8 +14,13 @@ namespace LogisticsAPI.Controllers
     public class AuthController : ApiController
     {
         [HttpPost]
+        [HttpOptions]
         public HttpResponseMessage GetToken(AuthRequest model)
         {
+            if (Request.Method == HttpMethod.Options)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
             try
             {
                 var ur = new UserRepository();

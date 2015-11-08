@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.OData;
+using LogisticsAPI.Authorization;
 
 namespace LogisticsAPI.Controllers
 {
@@ -15,6 +16,7 @@ namespace LogisticsAPI.Controllers
     {
         [EnableQuery]
         [HttpGet]
+        [LDAPAuthorize(Roles = new[] { Role.Read })]
         public HttpResponseMessage Get()
         {
             using (var db = new DBUnitOfWork())
@@ -39,6 +41,7 @@ namespace LogisticsAPI.Controllers
         }
 
         [HttpPost]
+        [LDAPAuthorize(Roles = new[] { Role.Write })]
         public HttpResponseMessage Post([FromBody] LocationViewModel locationViewModel)
         {
             using (var db = new DBUnitOfWork())
@@ -57,6 +60,7 @@ namespace LogisticsAPI.Controllers
             }
         }
         [HttpPut]
+        [LDAPAuthorize(Roles = new[] { Role.Write })]
         public HttpResponseMessage Put([FromODataUri] string key, [FromBody] LocationViewModel locationViewModel)
         {
             using (var db = new DBUnitOfWork())
@@ -78,6 +82,8 @@ namespace LogisticsAPI.Controllers
             }
         }
 
+        [HttpDelete]
+        [LDAPAuthorize(Roles = new[] { Role.Write })]
         public HttpResponseMessage Delete([FromODataUri] string key)
         {
             using (var db = new DBUnitOfWork())

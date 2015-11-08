@@ -75,6 +75,10 @@ namespace LogisticsAPI.DataAccess
 
         public void InvalidateTokensForUser(string userName, string token)
         {
+            if (token == null)
+            {
+                return;
+            }
             using (var db = new DBUnitOfWork())
             {
                 var tokens = db.Repository<TokenModel>().FindAll(x => x.Username.Equals(userName));

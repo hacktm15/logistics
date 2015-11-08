@@ -87,7 +87,7 @@ namespace LogisticsAPI.DataAccess
                     if (result != null)
                     {
                         DirectoryEntry userEntry = result.GetDirectoryEntry();
-                        foreach(KeyValuePair<string, string> field in Fields)
+                        foreach (KeyValuePair<string, string> field in Fields)
                         {
                             if (field.Key.Equals("userPassword"))
                             {
@@ -102,11 +102,15 @@ namespace LogisticsAPI.DataAccess
 
                         userEntry.CommitChanges();
                     }
+                    else
+                    {
+                        return false;
+                    }
                 }
 
                 return true;
             }
-            catch (Exception)
+            catch (Exception exc)
             {
                 return false;
             }
@@ -126,26 +130,33 @@ namespace LogisticsAPI.DataAccess
 
                 search.Filter = "(&(cn=" + targetUser + "*)(memberOf=cn=logistics,dc=services,dc=groups,dc=liga.ac,dc=root))";
                 SearchResult result = search.FindOne();
-                foreach (String Field in fields)
+                if (result != null)
                 {
-                    switch (Field)
+                    foreach (String Field in fields)
                     {
-                        case "displayName":
-                            user.Name = result.Properties[Field][0].ToString();
-                            break;
-                        case "mail":
-                            user.Mail = result.Properties[Field][0].ToString();
-                            break;
-                        case "telephoneNumber":
-                            user.Phone = result.Properties[Field][0].ToString();
-                            break;
-                        case "title":
-                            user.Title = result.Properties[Field][0].ToString();
-                            break;
-                        default:
-                            Console.WriteLine("Field doesn't exist.");
-                            break;
+                        switch (Field)
+                        {
+                            case "displayName":
+                                user.Name = result.Properties[Field][0].ToString();
+                                break;
+                            case "mail":
+                                user.Mail = result.Properties[Field][0].ToString();
+                                break;
+                            case "telephoneNumber":
+                                user.Phone = result.Properties[Field][0].ToString();
+                                break;
+                            case "title":
+                                user.Title = result.Properties[Field][0].ToString();
+                                break;
+                            default:
+                                Console.WriteLine("Field doesn't exist.");
+                                break;
+                        }
                     }
+                }
+                else
+                {
+                    return new Dictionary<string, string> {{"Error", "User not found!"}};
                 }
 
                 Dictionary<string, string> UserInfo = new Dictionary<string, string>();

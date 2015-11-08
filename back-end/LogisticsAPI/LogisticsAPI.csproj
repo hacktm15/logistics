@@ -141,33 +141,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201511071834173_firstOne.cs" />
-    <Compile Include="Migrations\201511071834173_firstOne.Designer.cs">
-      <DependentUpon>201511071834173_firstOne.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511072011462_addStatusPropertyToItem.cs" />
-    <Compile Include="Migrations\201511072011462_addStatusPropertyToItem.Designer.cs">
-      <DependentUpon>201511072011462_addStatusPropertyToItem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511072210020_addedAuthModel.cs" />
-    <Compile Include="Migrations\201511072210020_addedAuthModel.Designer.cs">
-      <DependentUpon>201511072210020_addedAuthModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511072220336_addedUserRightsToTokens.cs" />
-    <Compile Include="Migrations\201511072220336_addedUserRightsToTokens.Designer.cs">
-      <DependentUpon>201511072220336_addedUserRightsToTokens.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511080850438_addedPasswordToTokenModel.cs" />
-    <Compile Include="Migrations\201511080850438_addedPasswordToTokenModel.Designer.cs">
-      <DependentUpon>201511080850438_addedPasswordToTokenModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511081001342_anotherOne.cs" />
-    <Compile Include="Migrations\201511081001342_anotherOne.Designer.cs">
-      <DependentUpon>201511081001342_anotherOne.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511081106253_updatingRoleProperty.cs" />
-    <Compile Include="Migrations\201511081106253_updatingRoleProperty.Designer.cs">
-      <DependentUpon>201511081106253_updatingRoleProperty.cs</DependentUpon>
+    <Compile Include="Migrations\201511081336038_firstOne.cs" />
+    <Compile Include="Migrations\201511081336038_firstOne.Designer.cs">
+      <DependentUpon>201511081336038_firstOne.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelMappings\CategoryMap.cs" />
@@ -208,26 +184,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201511071834173_firstOne.resx">
-      <DependentUpon>201511071834173_firstOne.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511072011462_addStatusPropertyToItem.resx">
-      <DependentUpon>201511072011462_addStatusPropertyToItem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511072210020_addedAuthModel.resx">
-      <DependentUpon>201511072210020_addedAuthModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511072220336_addedUserRightsToTokens.resx">
-      <DependentUpon>201511072220336_addedUserRightsToTokens.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511080850438_addedPasswordToTokenModel.resx">
-      <DependentUpon>201511080850438_addedPasswordToTokenModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511081001342_anotherOne.resx">
-      <DependentUpon>201511081001342_anotherOne.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511081106253_updatingRoleProperty.resx">
-      <DependentUpon>201511081106253_updatingRoleProperty.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201511081336038_firstOne.resx">
+      <DependentUpon>201511081336038_firstOne.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
