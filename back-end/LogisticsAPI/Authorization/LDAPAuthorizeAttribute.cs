@@ -9,20 +9,29 @@ namespace LogisticsAPI.Authorization
 {
     public class LDAPAuthorizeAttribute : AuthorizeAttribute
     {
+        public new Role[] Roles;
+
         protected override bool IsAuthorized(HttpActionContext httpActionContext)
         {
-           
-            UserRights userRights;
+            return true;
+            if (Roles == null)
+            {
+                return true;
+            }
             if (httpActionContext.Request.Headers.Contains("Authorization"))
             {
-                if (TokenRepository.IsTokenValid(httpActionContext.Request.Headers.GetValues("Authorization").First(),
-                    out userRights))
+                var tr = new TokenRepository();
+                Role[] myRoles;
+                if (tr.IsTokenValid(httpActionContext.Request.Headers.GetValues("Authorization").First(),
+                    out myRoles))
                 {
-                    return true;
+                    if (Roles.Any(x=>myRoles.Contains(x)))
+                    {
+                        return true;
+                    }
                 }
             }
-
-            return false;//base.IsAuthorized(httpActionContext);
+            return false; //base.IsAuthorized(httpActionContext);
         }
     }
 }

@@ -131,6 +131,7 @@
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\LocationController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WarningController.cs" />
     <Compile Include="DataAccess\DBUnitOfWork.cs" />
     <Compile Include="DataAccess\Repository.cs" />
@@ -140,21 +141,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201511071834173_firstOne.cs" />
-    <Compile Include="Migrations\201511071834173_firstOne.Designer.cs">
-      <DependentUpon>201511071834173_firstOne.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511072011462_addStatusPropertyToItem.cs" />
-    <Compile Include="Migrations\201511072011462_addStatusPropertyToItem.Designer.cs">
-      <DependentUpon>201511072011462_addStatusPropertyToItem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511072210020_addedAuthModel.cs" />
-    <Compile Include="Migrations\201511072210020_addedAuthModel.Designer.cs">
-      <DependentUpon>201511072210020_addedAuthModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511072220336_addedUserRightsToTokens.cs" />
-    <Compile Include="Migrations\201511072220336_addedUserRightsToTokens.Designer.cs">
-      <DependentUpon>201511072220336_addedUserRightsToTokens.cs</DependentUpon>
+    <Compile Include="Migrations\201511081336038_firstOne.cs" />
+    <Compile Include="Migrations\201511081336038_firstOne.Designer.cs">
+      <DependentUpon>201511081336038_firstOne.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelMappings\CategoryMap.cs" />
@@ -169,9 +158,9 @@
     <Compile Include="DataAccess\DBContextLogistics.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\TokenModel.cs" />
-    <Compile Include="Models\TokenResponse.cs" />
+    <Compile Include="ViewModels\TokenResponse.cs" />
     <Compile Include="Models\UserModel.cs" />
-    <Compile Include="Models\UserRights.cs" />
+    <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Warning.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
@@ -195,17 +184,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201511071834173_firstOne.resx">
-      <DependentUpon>201511071834173_firstOne.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511072011462_addStatusPropertyToItem.resx">
-      <DependentUpon>201511072011462_addStatusPropertyToItem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511072210020_addedAuthModel.resx">
-      <DependentUpon>201511072210020_addedAuthModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511072220336_addedUserRightsToTokens.resx">
-      <DependentUpon>201511072220336_addedUserRightsToTokens.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201511081336038_firstOne.resx">
+      <DependentUpon>201511081336038_firstOne.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

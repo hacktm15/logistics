@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Web.Http.OData;
 using LogisticsAPI.DataAccess;
 using System.Web.Http.OData.Query;
+using LogisticsAPI.Authorization;
 using LogisticsAPI.ViewModels;
 
 namespace LogisticsAPI.Controllers
@@ -18,6 +19,7 @@ namespace LogisticsAPI.Controllers
     {
         [EnableQuery]
         [HttpGet]
+        [LDAPAuthorize(Roles = new[] { Role.Read })]
         public HttpResponseMessage Get()
         {
             using (var db = new DBUnitOfWork())
@@ -34,7 +36,7 @@ namespace LogisticsAPI.Controllers
                     }
                     return Request.CreateResponse(HttpStatusCode.OK, categoryViewModelList);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return Request.CreateResponse(HttpStatusCode.InternalServerError);
                 }
@@ -42,6 +44,7 @@ namespace LogisticsAPI.Controllers
         }
 
         [HttpPost]
+        [LDAPAuthorize(Roles = new[] { Role.Write })]
         public HttpResponseMessage Post([FromBody] CategoryViewModel categoryViewModel)
         {
             using (var db = new DBUnitOfWork())
@@ -53,7 +56,7 @@ namespace LogisticsAPI.Controllers
                     db.Repository<Category>().Add(category);
                     return Request.CreateResponse(HttpStatusCode.Created);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return Request.CreateResponse(HttpStatusCode.InternalServerError);
                 }
@@ -61,6 +64,7 @@ namespace LogisticsAPI.Controllers
         }
 
         [HttpPut]
+        [LDAPAuthorize(Roles = new[] { Role.Write })]
         public HttpResponseMessage Put([FromODataUri] string key, [FromBody] CategoryViewModel categoryViewModel)
         {
             using (var db = new DBUnitOfWork())
@@ -75,7 +79,7 @@ namespace LogisticsAPI.Controllers
                     else
                         return Request.CreateResponse(HttpStatusCode.NoContent);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return Request.CreateResponse(HttpStatusCode.InternalServerError);
                 }
@@ -83,6 +87,7 @@ namespace LogisticsAPI.Controllers
         }
 
         [HttpDelete]
+        [LDAPAuthorize(Roles = new[] { Role.Write })]
         public HttpResponseMessage Delete([FromODataUri] string key)
         {
             using (var db = new DBUnitOfWork())
@@ -94,7 +99,7 @@ namespace LogisticsAPI.Controllers
                     else
                         return Request.CreateResponse(HttpStatusCode.NoContent);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return Request.CreateResponse(HttpStatusCode.InternalServerError);
                 }

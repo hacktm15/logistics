@@ -13,29 +13,38 @@ namespace LogisticsAPI.Controllers
 {
     public class AuthController : ApiController
     {
-        public HttpResponseMessage Post(AuthRequest model)
+        [HttpPost]
+        [HttpOptions]
+        public HttpResponseMessage GetToken(AuthRequest model)
         {
+            if (Request.Method == HttpMethod.Options)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
             try
             {
-                UserRights userRights;
+                var ur = new UserRepository();
+                Role[] roles;
                 if (string.IsNullOrEmpty(model.User) || string.IsNullOrEmpty(model.Password) ||
-                    !UserRepository.CheckUserCredentials(model.User, model.Password, out userRights))
+                    !ur.CheckUserCredentials(model.User, model.Password, out roles))
                 {
                     return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid user or password!");
                 }
                 else
                 {
-                    var tokenModel = TokenRepository.GenerateAndRegisterTokenForUserWithRights(model.User, userRights);
+                    var tr = new TokenRepository();
+                    var tokenModel = tr.GenerateAndRegisterTokenForUserWithRights(model.User,
+                        model.Password, roles);
                     var tokenReponse = new TokenResponse()
                     {
-                        UserRights = userRights.ToString(),
+                        UserRights = string.Join(",", roles),
                         ExpirationDateTime = tokenModel.ExpirationDateTime,
                         Token = tokenModel.Token
                     };
                     return Request.CreateResponse(HttpStatusCode.OK, tokenReponse);
                 }
             }
-            catch (Exception exc)
+            catch (Exception)
             {
                 return Request.CreateResponse(HttpStatusCode.InternalServerError);
             }

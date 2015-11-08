@@ -32,7 +32,7 @@ namespace LogisticsAPI.Controllers
                     }
                     return Request.CreateResponse(HttpStatusCode.OK, warningViewModels); ;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return Request.CreateResponse(HttpStatusCode.InternalServerError);
                 }
@@ -51,7 +51,7 @@ namespace LogisticsAPI.Controllers
                     }
                     return Request.CreateResponse(HttpStatusCode.OK);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return Request.CreateResponse(HttpStatusCode.InternalServerError);
                 }
@@ -73,8 +73,9 @@ namespace LogisticsAPI.Controllers
                             var warning = new Warning
                             {
                                 ItemEntityId = item.EntityId,
-                                Message = "Warning"
+                                Message = "Warning, [ " + item.Name + " ] is insuficiently stocked, need [ " + (item.MinQuantity - item.Quantity) + " ] more!"
                             };
+
                             item.Status = "Warning";
                             db.Repository<Warning>().Add(warning);
                             shouldUpdateExisting = true;
@@ -99,7 +100,7 @@ namespace LogisticsAPI.Controllers
                     }
                 }
             }
-            catch (Exception exc)
+            catch (Exception)
             {
                 
             }
