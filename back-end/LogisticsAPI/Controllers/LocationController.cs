@@ -31,9 +31,9 @@ namespace LogisticsAPI.Controllers
                     }
                     return Request.CreateResponse(HttpStatusCode.OK, locationViewModelList);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    return Request.CreateResponse(HttpStatusCode.InternalServerError); ;
+                    return Request.CreateResponse(HttpStatusCode.InternalServerError);
                 }
             }
         }
@@ -50,7 +50,7 @@ namespace LogisticsAPI.Controllers
                     db.Repository<Location>().Add(location);
                     return Request.CreateResponse(HttpStatusCode.Created);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return Request.CreateResponse(HttpStatusCode.InternalServerError);
                 }
@@ -71,7 +71,7 @@ namespace LogisticsAPI.Controllers
                     else
                         return Request.CreateResponse(HttpStatusCode.NoContent);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return Request.CreateResponse(HttpStatusCode.InternalServerError);
                 }
@@ -89,7 +89,7 @@ namespace LogisticsAPI.Controllers
                     else
                         return Request.CreateResponse(HttpStatusCode.NoContent);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return Request.CreateResponse(HttpStatusCode.InternalServerError);
                 }

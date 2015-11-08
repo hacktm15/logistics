@@ -18,7 +18,7 @@ namespace LogisticsAPI.Controllers
     {
         [EnableQuery]
         [HttpGet]
-        [LDAPAuthorize]
+        [LDAPAuthorize(Roles = new[] {Role.Read, Role.Admin, Role.Write})]
         public HttpResponseMessage GetItem()
         {
             using (var db = new DBUnitOfWork())
@@ -27,7 +27,7 @@ namespace LogisticsAPI.Controllers
                 {
                     List<ItemViewModel> itemViewModelList = new List<ItemViewModel>();
                     var itemList = db.Repository<Item>().GetAll();
-                    foreach(var item in itemList)
+                    foreach (var item in itemList)
                     {
                         ItemViewModel itemViewModel = new ItemViewModel();
                         itemViewModel.CopyFrom(item);
@@ -35,7 +35,7 @@ namespace LogisticsAPI.Controllers
                     }
                     return Request.CreateResponse(HttpStatusCode.OK, itemViewModelList);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return Request.CreateResponse(HttpStatusCode.InternalServerError);
                 }
@@ -56,7 +56,7 @@ namespace LogisticsAPI.Controllers
                     WarningController.UpdateWarningForItem(item);
                     return Request.CreateResponse(HttpStatusCode.Created);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return Request.CreateResponse(HttpStatusCode.InternalServerError);
                 }
@@ -80,7 +80,7 @@ namespace LogisticsAPI.Controllers
                     else
                         return Request.CreateResponse(HttpStatusCode.NoContent);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return Request.CreateResponse(HttpStatusCode.InternalServerError);
                 }
@@ -102,7 +102,7 @@ namespace LogisticsAPI.Controllers
                     else
                         return Request.CreateResponse(HttpStatusCode.NoContent);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return Request.CreateResponse(HttpStatusCode.InternalServerError);
                 }

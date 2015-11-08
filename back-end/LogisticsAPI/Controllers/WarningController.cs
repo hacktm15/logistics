@@ -32,7 +32,7 @@ namespace LogisticsAPI.Controllers
                     }
                     return Request.CreateResponse(HttpStatusCode.OK, warningViewModels); ;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return Request.CreateResponse(HttpStatusCode.InternalServerError);
                 }
@@ -51,7 +51,7 @@ namespace LogisticsAPI.Controllers
                     }
                     return Request.CreateResponse(HttpStatusCode.OK);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return Request.CreateResponse(HttpStatusCode.InternalServerError);
                 }
@@ -99,7 +99,7 @@ namespace LogisticsAPI.Controllers
                     }
                 }
             }
-            catch (Exception exc)
+            catch (Exception)
             {
                 
             }
