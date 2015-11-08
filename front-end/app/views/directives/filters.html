@@ -5,23 +5,17 @@
       <select class="form-control"></select>
       <select class="form-control"></select>
     </div>
-    <label>Location</label>
     <div class="form-group">
-      <div class="checkbox" ng-repeat='location in locations'>
-        <label>
-          <input type="checkbox" value="option1">
-          {{location.Name}}
-        </label>
-      </div>
+      <label>Location</label>
+      <select class='form-control' ng-model='locationId' ng-change='submitLocation()'>
+        <option ng-repeat='location in locations' value="{{location.EntityId}}">{{location.Name}}</option>
+      </select>
     </div>
-    <label>Categories</label>
     <div class="form-group">
-      <div class="checkbox" ng-repeat='category in categories'>
-        <label>
-          <input type="checkbox" value="option1">
-          {{category.Name}}
-        </label>
-      </div>
+      <label>Category</label>
+      <select class='form-control' ng-model='categoryId' ng-change='submitCategory()'>
+        <option ng-repeat='category in categories' value="{{category.EntityId}}">{{category.Name}}</option>
+      </select>
     </div>
   </form>
 </div>
