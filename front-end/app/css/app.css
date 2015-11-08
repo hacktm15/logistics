@@ -55,3 +55,17 @@ float: left;
 #itemsPage{
     margin-top: 1%;
 }
+
+#scan-caption{
+    float: right;
+    margin-right: 0%;
+}
+
+#scanned-QR{
+    margin-bottom: 10%;
+}
+
+#location{
+    width: 30% !important;
+    margin-bottom: 5px;
+}
