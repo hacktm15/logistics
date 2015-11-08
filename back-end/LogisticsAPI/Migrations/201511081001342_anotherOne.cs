@@ -3,16 +3,16 @@ namespace LogisticsAPI.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class addedUserRightsToTokens : DbMigration
+    public partial class anotherOne : DbMigration
     {
         public override void Up()
         {
-            AddColumn("dbo.TokenModels", "Role", c => c.Int(nullable: false));
+            DropColumn("dbo.TokenModels", "_role");
         }
         
         public override void Down()
         {
-            DropColumn("dbo.TokenModels", "Role");
+            AddColumn("dbo.TokenModels", "_role", c => c.Int(nullable: false));
         }
     }
 }
