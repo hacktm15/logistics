@@ -33,7 +33,7 @@
             </div>
           </div>
           <div class='col-xs-9'>
-            <input type="text" class="form-control" placeholder="Search" style='width: 100%'>
+            <input type="text" class="form-control" ng-model="searchText" ng-change="searchContent(searchText)" placeholder="Search" style='width: 100%'>
           </div>
           </form>
         </li>
@@ -54,9 +54,10 @@
 
           <div class="navbar-collapse collapse" id="navbar-main">
 
-            <form class="navbar-form navbar-left" role="search">
+            <form class="navbar-form navbar-left" role="search" ng-submit='searchContent()'>
               <div class="form-group">
-                <input type="text" class="form-control" id="search-bar" placeholder="Search" size="60">
+                <input type="text" class="form-control" id="search-bar" placeholder="Search" ng-model="searchText" size="60">
+                <input type="submit"  value="Submit">
               </div>
             </form>
             <ul class="nav navbar-nav">
