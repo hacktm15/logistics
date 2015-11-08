@@ -9,7 +9,7 @@
     <div class="form-group">
       <div class="checkbox" ng-repeat='location in locations | filter:searchLocation'>
         <label>
-          <input type="checkbox" value="option1">
+          <input type="checkbox" value="{{location.entityId}}">
           {{location.Name}}
         </label>
       </div>
