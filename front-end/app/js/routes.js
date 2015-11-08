@@ -28,6 +28,10 @@ logisticsApp.config(['$routeProvider',
         templateUrl: 'views/qr.html',
         controller: 'qrController'
       }).
+      when('/warnings', {
+        templateUrl: 'views/warnings.html',
+        controller: 'WarningsController'
+      }).
       otherwise({
         redirectTo: '/login'
       });

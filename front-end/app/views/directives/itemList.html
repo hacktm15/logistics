@@ -14,7 +14,7 @@
     <div id="{{item.EntityId}}" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="heading{{item.EntityId}}">
 
       <div class="thumbnail">
-          <div class="caption">
+          <div class="caption" style="width: 50%;">
             <h3>{{item.Name}}</h3>
             <div class="panel-body">
               <p><h4>Description</h4>{{item.Description}}</p>
@@ -24,12 +24,12 @@
               <p><h4>MinQuantity</h4>{{item.MinQuantity}}</p>
               <p><h4>Relevance</h4>{{item.Relevance}}</p>
               <form ng-submit='addStock(stock)'>
-                <input type='text' class='form-control' ng-model='stock'></input>
-                <input type='submit' class='btn btn-primary'></input>
+                <input type='text' class='form-control' ng-model='stock' id="add-input"></input>
+                <input type='submit' class='form-control' id="add" placeholder="Add Quantity"></input>
               </form>
             </div>
           </div>
-                 <div>
+                 <div style="max-width: 300px; float: right; margin: 10% 10% 10% 0%;">
           <img src="img/logo.png" alt="..." id="img_product">
         </div>
       </div>

@@ -38,13 +38,13 @@ input, select {
 #img_product{
 
     max-width: 300px;
-float: left;
-    margin:10%;
+/*float: left;
+    margin:10%;*/
 }
 
 .caption{
     float: left;
-    margin-right: 20%;
+    /*margin-right: 20%;*/
 }
 
 .thumbnail{
@@ -65,7 +65,24 @@ float: left;
     margin-bottom: 10%;
 }
 
-#location{
+.location{
     width: 30% !important;
-    margin-bottom: 5px;
+    margin-bottom: 5px !important;
+}
+
+#welcome{
+    border-left:3px solid #18BC9C !important;
+    margin: 10px !important;
+    padding: 15px;
+}
+
+#add{
+    width: 50%;
+margin-left: 20% !important;
+}
+
+#add-input{
+    width: 15%;
+float: left;
+    text-align: center;
 }
