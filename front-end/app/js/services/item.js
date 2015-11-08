@@ -12,7 +12,7 @@ logisticsApp.factory('itemService', ['$http', function ($http) {
       }
       queryString += (queryString != '' && params.CategoryId != undefined) ? ' and ' : ''
       if (params.CategoryId != undefined) {
-        queryString += "substringof('" + params.CategoryId + "', CategoryId) eq true"
+        queryString += "Categories/any(cat: cat eq guid'" + params.CategoryId + "')"
       }
       if (queryString == '') {
         return $http.get("http://tools.ligaac.ro/oData/Item");
