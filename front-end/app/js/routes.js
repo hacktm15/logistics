@@ -17,7 +17,8 @@ logisticsApp.config(['$routeProvider',
         templateUrl: 'views/home.html'
       }).
       when('/qr', {
-        templateUrl: 'views/qr.html'
+        templateUrl: 'views/qr.html',
+        controller: 'qrController'
       }).
       otherwise({
         redirectTo: '/login'

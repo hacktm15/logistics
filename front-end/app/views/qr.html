@@ -75,12 +75,16 @@
         </div>
         <div class="col-md-6" style="text-align: center;">
             <div id="result" class="thumbnail">
-                <div class="well" style="position: relative;display: inline-block;">
-                    <img id="scanned-img" src="" width="320" height="240">
-                </div>
                 <div class="caption">
                     <h3>Scanned result</h3>
-                    <p id="scanned-QR"></p>
+                    <form ng-submit='submit()'>
+                    <input type='text' id="scanned-QR" ng-model='scannedQr'></input>
+                    <input type='submit'></input>
+                    </form>
+                </div>
+
+                <div class="well" style="position: relative;display: inline-block;">
+                    <img id="scanned-img" src="" width="320" height="240">
                 </div>
             </div>
         </div>

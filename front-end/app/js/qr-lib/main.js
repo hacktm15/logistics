@@ -33,7 +33,8 @@
 				autoBrightnessValue: 120,
 				resultFunction: function(text, imgSrc) {
 					si.attr('src', imgSrc);
-					sQ.text(text);
+					sQ.val(text);
+					sQ.trigger('input');
 					sl.fadeOut(150, function() {
 						sl.fadeIn(150);
 					});
