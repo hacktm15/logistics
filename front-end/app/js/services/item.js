@@ -14,6 +14,10 @@ logisticsApp.factory('itemService', ['$http', function ($http) {
       if (params.CategoryId != undefined) {
         queryString += "Categories/any(cat: cat eq guid'" + params.CategoryId + "')"
       }
+      queryString += (queryString != '' && params.EntityId != undefined) ? ' and ' : ''
+      if (params.EntityId != undefined) {
+        queryString += "EntityId eq guid'" + params.EntityId + "'"
+      }
       if (queryString == '') {
         return $http.get("http://tools.ligaac.ro/oData/Item");
       } else {
